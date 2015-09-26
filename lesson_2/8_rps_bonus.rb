@@ -40,25 +40,6 @@ def alt_display_results(user, computer)
   end
 end
 
-# this attempt was when i tried to pass in alt_display_results as the argument
-# def update_score(result)
-#   if result == "You won!"
-#     user_score += 1
-#   elsif result == "You lost."
-#     computer_score += 1
-#   end
-# end
-
-# this attempt was when i tried to use the same logic as in the alt_display_results method
-# def update_score(user, computer)
-#   if WHAT_BEATS_WHAT[user].include?(computer)
-#     user_score += 1
-#   elsif
-#     WHAT_BEATS_WHAT[computer].include?(user)
-#     computer_score += 1
-#   end
-# end
-
 user_score = 0
 computer_score = 0
 loop do
@@ -94,15 +75,12 @@ loop do
   puts "You chose: #{user_choice.upcase} | Computer chose: #{computer_choice.upcase}"
   alt_display_results(user_choice, computer_choice)
 
+  # update and display score
   if WHAT_BEATS_WHAT[user_choice].include?(computer_choice)
     user_score += 1
   elsif WHAT_BEATS_WHAT[computer_choice].include?(user_choice)
     computer_score += 1
   end
-
-  # score is updated and displayed -- can't get this to work
-  # update_score(user_choice, computer_choice)
-
   puts "The score is YOU: #{user_score} | COMPUTER: #{computer_score}"
 
   # after someone wins, reset the score variables
@@ -111,7 +89,7 @@ loop do
     user_score = 0
     computer_score = 0
   elsif computer_score == 5
-    puts "\nUh oh! The computer beat you.\n"
+    puts "\nUh oh! The computer beat you."
     user_score = 0
     computer_score = 0
   end
