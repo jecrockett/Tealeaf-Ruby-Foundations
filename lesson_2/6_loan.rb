@@ -1,5 +1,7 @@
 require 'pry'
 
+# Really should refactor the answer check logic into methods
+
 def prompt(message)
   puts "=> #{message}"
 end
@@ -11,9 +13,9 @@ loop do
   loan_amount = ''
   loop do
     loan_amount = gets.chomp
-    
+
     # make it work if someont puts a $ with their loan amount
-    if loan_amount.start_with?('$') == true
+    if loan_amount.start_with?('$')
       loan_amount = loan_amount.delete '$'
     end
 
@@ -34,7 +36,7 @@ loop do
   loop do
     loan_duration = gets.chomp
 
-    #account for empty, non-numeral, 0, negative
+    # account for empty, non-numeral, 0, negative
     if loan_duration.empty? || loan_duration.to_i <= 0
       prompt 'Please enter a positive number of months.'
     else
@@ -66,7 +68,7 @@ loop do
     end
   end
 
-  #calculate monthly payment
+  # calculate monthly payment
   if apr == 0.0
     monthly_payment = loan_amount / loan_duration
   else
@@ -84,5 +86,3 @@ loop do
 end
 
 puts "Okay. Thanks for using the loan calculator!"
-
-
