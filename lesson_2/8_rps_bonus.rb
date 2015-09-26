@@ -30,13 +30,31 @@ end
 #   end
 # end
 
+# def alt_display_results(user, computer)
+#   if user == computer
+#     prompt "It's a tie."
+#   elsif WHAT_BEATS_WHAT[user].include?(computer)
+#     prompt "You won!"
+#   else
+#     prompt "You lost."
+#   end
+# end
+
+def user_win?(user, computer)
+  WHAT_BEATS_WHAT[user].include?(computer)
+end
+
+def computer_win?(user, computer)
+  WHAT_BEATS_WHAT[computer].include?(user)
+end
+
 def alt_display_results(user, computer)
-  if user == computer
-    prompt "It's a tie."
-  elsif WHAT_BEATS_WHAT[user].include?(computer)
+  if user_win?(user, computer)
     prompt "You won!"
-  else
+  if computer_win?(user, computer)
     prompt "You lost."
+  else
+    prompt "It's a tie."
   end
 end
 
@@ -48,7 +66,7 @@ loop do
     prompt "Choose one: #{GAME_CHOICES.keys.join(', ')}"
     user_choice = gets.chomp.downcase
 
-    # format the answer: reject if empty, accept if it's one of approved shorthands
+    # reject if empty, accept if it's one of approved shorthands
     # if accepted, reformat user_choice to match appropriate key value
     GAME_CHOICES.each do |key, _|
       if user_choice.empty? # empty input returns true for below statement.
@@ -58,9 +76,7 @@ loop do
       end
     end
 
-    # officially accept/reject the answer
-    # tried to add this to previous if statement, but it would print out
-    # the "not a valid choice" message for each key rather than just once.
+    # any valid answer should now be one of the keys. if not, reject it.
     if GAME_CHOICES.key?(user_choice)
       break
     else
@@ -76,9 +92,9 @@ loop do
   alt_display_results(user_choice, computer_choice)
 
   # update and display score
-  if WHAT_BEATS_WHAT[user_choice].include?(computer_choice)
+  if user_win?(user_choice, computer_choice)
     user_score += 1
-  elsif WHAT_BEATS_WHAT[computer_choice].include?(user_choice)
+  elsif computer_win?(user_choice, computer_choice)
     computer_score += 1
   end
   puts "The score is YOU: #{user_score} | COMPUTER: #{computer_score}"

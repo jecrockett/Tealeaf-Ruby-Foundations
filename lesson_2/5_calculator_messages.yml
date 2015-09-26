@@ -1,0 +1,21 @@
+# calculator_messaages.yml
+
+en:
+  welcome: "Welcome to Calculator! Enter your name:"
+  valid_name: "Please use a valid name."
+  number1: "What's the first number?"
+  number2: "What's the second number?"
+  valid_number: "Hmm...that doesn't look like a valid number."
+  choose_operation: "Must choose 1, 2, 3 or 4"
+  go_again: "Do you want to perform another calculation? (Y to calculate again)"
+  goodbye: "Thank you for using the calculator. Goodbye!"
+
+cz:
+  welcome: "Vítejte v Kalkulačka! Zadejte své jméno"
+  valid_name: "Prosím, vyberte jméno."
+  number1: "Co je to první číslo?"
+  number2: "Co je to druhé číslo?"
+  valid_number: "To nevypadá jako platné číslo."
+  choose_operation: "Musí si vybrat 1, 2, 3 nebo 4."
+  go_again: "Chcete provést další výpočet ? ('Y' se znovu vypočítat)"
+  goodbye: "Děkujeme, že používáte kalkulačku . Sbohem!"
