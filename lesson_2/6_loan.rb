@@ -19,6 +19,8 @@ loop do
       loan_amount = loan_amount.delete '$'
     end
 
+
+
     # account for an empty, non-numerical string or negative number answer
     # convert to float
     if loan_amount == "0"

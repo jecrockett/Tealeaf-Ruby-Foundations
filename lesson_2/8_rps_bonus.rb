@@ -1,10 +1,10 @@
 require 'pry'
 
-GAME_CHOICES = { 'rock' => ['r', 'ro', 'roc'],
-                 'paper' => ['p', 'pa', 'pap', 'pape'],
-                 'scissors' => ['sc', 'sci', 'scissor'],
-                 'lizard' => ['l', 'li', 'liz'],
-                 'spock' => ['sp', 'spo', 'spoc'] }
+# GAME_CHOICES = { 'rock' => ['r', 'ro', 'roc'],
+#                  'paper' => ['p', 'pa', 'pap', 'pape'],
+#                  'scissors' => ['sc', 'sci', 'scissor'],
+#                  'lizard' => ['l', 'li', 'liz'],
+#                  'spock' => ['sp', 'spo', 'spoc'] }
 
 WHAT_BEATS_WHAT = { "rock" => %w(scissors lizard),
                     "paper" => %w(rock spock),
@@ -51,7 +51,7 @@ end
 def alt_display_results(user, computer)
   if user_win?(user, computer)
     prompt "You won!"
-  if computer_win?(user, computer)
+  elsif computer_win?(user, computer)
     prompt "You lost."
   else
     prompt "It's a tie."
